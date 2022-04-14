@@ -1,5 +1,6 @@
 package blz;
 import java.util.*;
+import java.util.stream.Stream;
 import java.io.*;
 import java.nio.file.*;
 
@@ -34,4 +35,15 @@ public class EmployeePayRollFileService {
 
         return count;
     }
+
+    public void printData() {
+        Path filePath = Paths.get(DATA_FILE);
+        try {
+            Stream<String> stringStream= Files.lines(filePath);
+            stringStream.forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
